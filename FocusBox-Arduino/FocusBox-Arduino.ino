@@ -39,7 +39,7 @@ void setup(){
 void loop() {
   if (receiveFlag == true) {
     //Serial.println(temp);
-    if(strcmp(temp, "END!")==0){
+    /*if(strcmp(temp, "END!")==0){
       lcd.clear();
       lcd.print("Ending");
       delay(1000);
@@ -48,11 +48,13 @@ void loop() {
     analogWrite(greenLedPin, 0);
     analogWrite(blueLedPin, 0);
     while(true){} //kill program
-    }
+    }*/
      
     
     
     int month = (temp[0]-'0')*10 + (temp[1]-'0');
+    Serial.println(month);
+    Serial.println(temp[0]);
     int day = (temp[3]-'0')*10 + (temp[4]-'0');
     int year = (temp[6]-'0')*1000+(temp[7]-'0')*100+(temp[8]-'0')*10+(temp[9]-'0');
 
@@ -71,7 +73,6 @@ void loop() {
     lcd.print("/");
     lcd.print(year);
     lcd.setCursor(0,1);
-    lcd.print(", ");
     lcd.print(hour);
     lcd.print(":");
     lcd.println(minute);
@@ -91,7 +92,7 @@ void receiveEvent(int howMany) {
   }
 
   for (int i = 0; i < howMany; ++i) temp[i] = temp[i+1];
-  Wire.write(colorVal);
+  //Wire.write(colorVal);
 
   receiveFlag = true;
 }
