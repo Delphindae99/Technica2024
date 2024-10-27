@@ -87,13 +87,13 @@ try:
                 print("placeholder")
             print("Sending")
             writeData(timeString)
-            ledColor = bus.read_byte_data(arduinoAddress, 0)
+           # ledColor = bus.read_byte_data(arduinoAddress, 0)
             print(ledColor);
             prevTime = currentSeconds
             #time.sleep(60)
 except KeyboardInterrupt:
     print("Ending program")
-    writeData("END!")
+    #writeData("END!")
 finally:
     GPIO.cleanup()
     pygame.quit()
